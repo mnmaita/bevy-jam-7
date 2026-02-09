@@ -34,10 +34,10 @@ fn highlight_focused_element(
     input_focus_visible: Res<InputFocusVisible>,
     mut query: Query<(Entity, &mut BorderColor), With<Hovered>>,
 ) {
-    todo!("Update highlighting style of focused element");
     const FOCUSED_BORDER_COLOR: Color = Color::BLACK;
 
     for (entity, mut border_color) in query.iter_mut() {
+        todo!("Update highlighting style of focused element");
         if input_focus.0 == Some(entity) && input_focus_visible.0 {
             *border_color = BorderColor::all(FOCUSED_BORDER_COLOR);
         } else {
