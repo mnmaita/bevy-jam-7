@@ -2,6 +2,7 @@ use bevy::prelude::*;
 
 mod animation;
 mod audio;
+mod fonts;
 mod game_timer;
 mod pause;
 mod textures;
@@ -22,6 +23,7 @@ fn main() {
         audio::AudioPlugin,
         pause::PausePlugin,
         textures::TexturesPlugin,
+        fonts::FontsPlugin,
     ));
 
     app.run();
