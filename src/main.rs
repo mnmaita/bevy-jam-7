@@ -1,11 +1,10 @@
 use bevy::prelude::*;
 
-use crate::{animation::SpriteAnimationPlugin, audio::AudioPlugin, pause::PausePlugin};
-
 mod animation;
 mod audio;
 mod game_timer;
 mod pause;
+mod textures;
 
 fn main() {
     let mut app = App::new();
@@ -18,7 +17,12 @@ fn main() {
         ..Default::default()
     }));
 
-    app.add_plugins((SpriteAnimationPlugin, AudioPlugin, PausePlugin));
+    app.add_plugins((
+        animation::SpriteAnimationPlugin,
+        audio::AudioPlugin,
+        pause::PausePlugin,
+        textures::TexturesPlugin,
+    ));
 
     app.run();
 }
