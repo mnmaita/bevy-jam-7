@@ -53,7 +53,14 @@ impl Default for WorldBounds {
 }
 
 fn setup_camera(mut commands: Commands) {
-    commands.spawn((MainCamera, SpatialAudioReceiver));
+    commands.spawn((
+        MainCamera,
+        SpatialAudioReceiver,
+        Projection::Orthographic(OrthographicProjection {
+            scale: 0.2,
+            ..OrthographicProjection::default_2d()
+        }),
+    ));
 }
 
 fn follow_target(
