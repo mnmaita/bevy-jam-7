@@ -1,5 +1,10 @@
 use bevy::prelude::*;
 
+use crate::animation::SpriteAnimationPlugin;
+
+mod animation;
+mod game_timer;
+
 fn main() {
     let mut app = App::new();
 
@@ -10,6 +15,8 @@ fn main() {
         }),
         ..Default::default()
     }));
+
+    app.add_plugins((SpriteAnimationPlugin,));
 
     app.run();
 }
