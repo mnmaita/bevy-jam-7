@@ -7,6 +7,7 @@ mod fonts;
 mod game_timer;
 mod input;
 mod pause;
+mod physics;
 mod textures;
 mod ui;
 
@@ -32,6 +33,7 @@ fn main() {
         audio::AudioPlugin,
         fonts::FontsPlugin,
         ui::UiPlugin,
+        physics::PhysicsPlugin,
         animation::SpriteAnimationPlugin,
         pause::PausePlugin,
     ));

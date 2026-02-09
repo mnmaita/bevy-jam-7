@@ -4,6 +4,14 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+avian2d = { version = "0.5.0", default-features = false, features = [
+    "2d",
+    "debug-plugin",
+    "default-collider",
+    "f32",
+    "parallel",
+    "parry-f32",
+] }
 bevy = { version = "0.18.0", default-features = false, features = [
     "default_app",
     "std",
