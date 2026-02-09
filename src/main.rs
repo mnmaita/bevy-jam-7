@@ -5,8 +5,10 @@ mod audio;
 mod camera;
 mod fonts;
 mod game_timer;
+mod input;
 mod pause;
 mod textures;
+mod ui;
 
 fn main() {
     let mut app = App::new();
@@ -21,9 +23,11 @@ fn main() {
 
     app.add_plugins((
         camera::CameraPlugin,
+        input::InputPlugin,
         textures::TexturesPlugin,
         audio::AudioPlugin,
         fonts::FontsPlugin,
+        ui::UiPlugin,
         animation::SpriteAnimationPlugin,
         pause::PausePlugin,
     ));
