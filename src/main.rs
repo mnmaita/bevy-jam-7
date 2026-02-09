@@ -2,6 +2,7 @@ use bevy::prelude::*;
 
 mod animation;
 mod audio;
+mod camera;
 mod fonts;
 mod game_timer;
 mod pause;
@@ -19,11 +20,12 @@ fn main() {
     }));
 
     app.add_plugins((
-        animation::SpriteAnimationPlugin,
-        audio::AudioPlugin,
-        pause::PausePlugin,
+        camera::CameraPlugin,
         textures::TexturesPlugin,
+        audio::AudioPlugin,
         fonts::FontsPlugin,
+        animation::SpriteAnimationPlugin,
+        pause::PausePlugin,
     ));
 
     app.run();
