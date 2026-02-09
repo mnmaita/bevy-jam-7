@@ -18,6 +18,7 @@ bevy = { version = "0.18.0", default-features = false, features = [
     "2d_bevy_render",
     "ui_bevy_render",
 ] }
+bevy_kira_audio = "0.25.0"
 
 # Enable a small amount of optimization in the dev profile.
 [profile.dev]
