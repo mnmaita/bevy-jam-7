@@ -4,11 +4,11 @@ mod animation;
 mod audio;
 mod camera;
 mod fonts;
+mod game;
 mod game_timer;
 mod input;
 mod pause;
 mod physics;
-mod player;
 mod textures;
 mod ui;
 
@@ -37,9 +37,8 @@ fn main() {
         physics::PhysicsPlugin,
         animation::SpriteAnimationPlugin,
         pause::PausePlugin,
+        game::GamePlugin,
     ));
-
-    app.add_plugins(player::PlayerPlugin);
 
     app.insert_resource(ClearColor(Color::BLACK));
 

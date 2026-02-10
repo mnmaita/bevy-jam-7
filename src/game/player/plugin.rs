@@ -2,6 +2,8 @@ use bevy::prelude::*;
 
 use crate::animation::SpriteAnimation;
 
+use super::Player;
+
 pub struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
@@ -10,9 +12,6 @@ impl Plugin for PlayerPlugin {
         app.init_resource::<PlayerTextureAtlasLayout>();
     }
 }
-
-#[derive(Component)]
-pub struct Player;
 
 fn spawn_player(
     mut commands: Commands,
