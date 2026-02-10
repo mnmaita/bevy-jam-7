@@ -8,6 +8,7 @@ mod game_timer;
 mod input;
 mod pause;
 mod physics;
+mod player;
 mod textures;
 mod ui;
 
@@ -37,6 +38,8 @@ fn main() {
         animation::SpriteAnimationPlugin,
         pause::PausePlugin,
     ));
+
+    app.add_plugins(player::PlayerPlugin);
 
     app.run();
 }
