@@ -33,6 +33,20 @@ fn animate_sprite(
     time: Res<Time>,
 ) {
     for (entity, mut timer, mut sprite, mut sprite_animation, events_enabled) in &mut query {
+        if sprite_animation.is_last_frame() {
+            if sprite_animation.despawn_on_finish() {
+                commands.entity(entity).try_despawn();
+                continue;
+            }
+
+            if sprite_animation.is_ping_pong() {
+                sprite_animation.direction = sprite_animation.direction.reverse();
+            }
+
+            sprite_animation.reset();
+            continue;
+        }
+
         if !timer.tick(time.delta()).just_finished() {
             continue;
         }
@@ -45,34 +59,20 @@ fn animate_sprite(
                 SpriteAnimationDirection::Backward => sprite_animation.next_back(),
             };
 
-            match next_frame {
-                Some((.., frame)) => {
-                    texture_atlas.index = frame.index();
-                    timer.set_duration(Duration::from_secs_f32(frame.duration_secs()));
-                    timer.reset();
+            if let Some((.., frame)) = next_frame {
+                texture_atlas.index = frame.index();
+                timer.set_duration(Duration::from_secs_f32(frame.duration_secs()));
+                timer.reset();
 
-                    if events_enabled {
-                        commands.trigger(SpriteAnimationFrameChangeEvent {
-                            entity,
-                            index: texture_atlas.index,
-                        });
+                if events_enabled {
+                    commands.trigger(SpriteAnimationFrameChangeEvent {
+                        entity,
+                        index: texture_atlas.index,
+                    });
 
-                        if sprite_animation.is_last_frame() {
-                            commands.trigger(SpriteAnimationEndEvent { entity });
-                        }
+                    if sprite_animation.is_last_frame() {
+                        commands.trigger(SpriteAnimationEndEvent { entity });
                     }
-                }
-                None => {
-                    if sprite_animation.despawn_on_finish() {
-                        commands.entity(entity).try_despawn();
-                        return;
-                    }
-
-                    if sprite_animation.is_ping_pong() {
-                        sprite_animation.direction = sprite_animation.direction.reverse();
-                    }
-
-                    sprite_animation.reset();
                 }
             }
         }

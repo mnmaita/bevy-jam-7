@@ -92,8 +92,8 @@ impl SpriteAnimation {
 
     /// Resets this [`SpriteAnimation`] frames iterator, "rewinding" the animation.
     pub fn reset(&mut self) {
-        // TODO: Should this also reset `current_frame`?
         self.frames_iter = self.frames.clone().into_iter().enumerate();
+        self.current_frame = None;
     }
 
     pub fn is_last_frame(&mut self) -> bool {
