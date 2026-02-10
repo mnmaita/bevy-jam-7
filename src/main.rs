@@ -41,5 +41,7 @@ fn main() {
 
     app.add_plugins(player::PlayerPlugin);
 
+    app.insert_resource(ClearColor(Color::BLACK));
+
     app.run();
 }
